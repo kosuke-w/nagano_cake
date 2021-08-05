@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :order_details
   end
 
+  root to: "homes#top"
   get 'cart_items/destroy_all'
   get 'orders/thanks'
   get 'orders/confirm'
