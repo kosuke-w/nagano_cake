@@ -10,6 +10,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= link_to "新規登録", new_customer_registration_path, class: "fas fa-user-plus nav-text nav-link text-light" %>
+      <%= link_to "ログイン", new_customer_session_path, class: "fas fa-sign-in-alt nav-text nav-link text-light" %>
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "fas fa-sign-out-alt nav-text nav-link text-light" %>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+
+    </footer>
   </body>
 </html>
