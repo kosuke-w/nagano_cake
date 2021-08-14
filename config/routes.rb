@@ -17,6 +17,15 @@ Rails.application.routes.draw do
   get 'cart_items/destroy_all'
   get 'orders/thanks'
   get 'orders/confirm'
+  get 'customers/my_page' => "customers#show"
+  get 'customers/unsubscribe' => 'customers#unsubscribe'
+  patch 'customers/withdraw' => 'customers#withdraw'
+  resources :customers do
+    member do
+      get "check"
+      patch "withdraw"
+    end
+  end
   resources :items
   resources :cart_items
   resources :orders

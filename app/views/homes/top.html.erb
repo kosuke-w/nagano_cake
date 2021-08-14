@@ -8,7 +8,7 @@
   <% @items.each do |item| %>
       <tr>
         <td>
-          <%= item.image_id %>
+          <%= attachment_image_tag item, :image, :fill, 60, 60 %>
         </td>
         <td>
           <%= item.name %>

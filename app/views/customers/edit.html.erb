@@ -1,0 +1,57 @@
+<h1>会員情報編集</h1>
+<%= form_with model: @customer, url: customer_path(@customer.id), local:true do |f| %>
+    <div class="form-group">
+      <div class="form-group row" >
+        <label>氏名</label>
+        <div>
+          <%= f.text_field :last_name %>
+        </div>
+        <div>
+          <%= f.text_field :first_name %>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label>フリガナ</label>
+        <div>
+          <%= f.text_field :last_name_kana %>
+        </div>
+        <div>
+          <%= f.text_field :first_name_kana %>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label>郵便番号</label>
+        <div>
+          <%= f.text_field :postal_code %>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label>住所</label>
+        <div>
+          <%= f.text_area :address %>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label>電話番号</label>
+        <div>
+          <%= f.text_field :telephone_number %>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label>メールアドレス</label>
+        <div>
+          <%= f.text_field :email %>
+        </div>
+      </div>
+      
+    </div>
+    <div>
+      <div class="form-group">
+        <%= f.submit '編集内容を保存', class: "btn btn-green" %>
+      </div>
+      <div class="form-group">
+        <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-sm btn-green" %>
+      </div>
+    </div>
+    
+<% end %>
