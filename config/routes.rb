@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   root to: "homes#top"
-  get 'cart_items/destroy_all'
+  get 'cart_items/destroy_all' => 'cart_items#destroy_all'
   get 'orders/thanks'
   get 'orders/confirm'
   get 'customers/my_page' => "customers#show"

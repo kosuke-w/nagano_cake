@@ -1,0 +1,6 @@
+ja:
+  enums:
+    customer:
+      is_active:
+        Available: '有効'
+        Invalid: '退会'

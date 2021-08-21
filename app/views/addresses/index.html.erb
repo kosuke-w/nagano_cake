@@ -29,7 +29,7 @@
       <% end %>
     </div>
   </div>
-  
+
   <div>
     <table class="table table-hover table-inverse">
       <thead>
@@ -52,10 +52,10 @@
             </td>
             <td>
               <div class="form-group">
-                <%= link_to "編集する", edit_address_path, class: "btn btn-sm btn-green" %>
+                <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-sm btn-green" %>
               </div>
               <div class="form-group">
-                <%= link_to "削除する", address_path(@address.id), method: :delete, class: "btn btn-sm btn-red", "data-confirm" => "本当に消しますか？" %>
+                <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-sm btn-red", "data-confirm" => "本当に消しますか？" %>
               </div>
             </td>
           </tr>
