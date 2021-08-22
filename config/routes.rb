@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get 'cart_items/destroy_all' => 'cart_items#destroy_all'
   get 'orders/thanks'
-  get 'orders/confirm'
+  post 'orders/confirm' => 'orders#confirm'
   get 'customers/my_page' => "customers#show"
   get 'customers/unsubscribe' => 'customers#unsubscribe'
   patch 'customers/withdraw' => 'customers#withdraw'

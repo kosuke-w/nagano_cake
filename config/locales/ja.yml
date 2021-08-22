@@ -4,3 +4,34 @@ ja:
       is_active:
         Available: '有効'
         Invalid: '退会'
+
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: 'クレジットカード'
+        transfer: '銀行振込'
+
+ja:
+  enums:
+    order_detail:
+      product_status:
+        incapable: '着手不可'
+        waiting: '制作待ち'
+        producting: '制作中'
+        finish: '製作完了'
+
+ja:
+  enums:
+    order:
+      status:
+        waiting: '入金待ち'
+        confirm: '入金確認'
+        producting: '制作中'
+        stand_by: '発送待ち'
+        sending: '発送済み'
+
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d"

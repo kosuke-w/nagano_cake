@@ -1,2 +1,83 @@
-<h1>Orders#confirm</h1>
-<p>Find me in app/views/orders/confirm.html.erb</p>
+<div>
+  <div>
+    <div>
+      <h1>注文情報入力</h1>
+    </div>
+    <div>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                <%= cart_item.item.add_tax_price.to_s(:delimited) %>
+              </td>
+              <td>
+                <%= cart_item.amount %>
+              </td>
+              <td>
+                <%= cart_item.subtotal %>
+              </td>
+              <% @total += cart_item.subtotal %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <table class="table table-hover table-inverse">
+        <thead>
+          <th>送料</th>
+          <th>商品合計</th>
+          <th>請求金額</th>
+        </thead>
+        <tbody>
+            <tr>
+              <td>
+                <%= SHIPPING_COST.to_s(:delimited) %>
+              </td>
+              <td>
+                <%= @total.to_s(:delimited) %>
+              </td>
+              <td>
+                <%= @total_payment = SHIPPING_COST.to_i + @total.to_i %>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <h1>支払方法</h1>
+      <div>
+        <%= @order.payment_method ? 'クレジットカード' : '銀行振込' %>
+      </div>
+    </div>
+    <div>
+      <h1>お届け先</h1>
+      <div>
+        <%= @order.address_display %>
+      </div>
+    </div>
+  </div>
+  
+  <diV>
+    <%= form_with model: @order, url: orders_path, local:true do |f| %>
+      <%= f.hidden_field :total_payment, :value => @total_payment %>
+      <%= f.hidden_field :shipping_cost, :value => SHIPPING_COST %>
+      <div>
+        <%= f.submit "注文を確定する", class: "btn btn-green" %>
+      </div>
+    <% end %>
+  </diV>
+</div>
+

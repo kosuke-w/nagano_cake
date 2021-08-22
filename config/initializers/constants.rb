@@ -1,0 +1,3 @@
+Tax = 1.08
+
+SHIPPING_COST = 800
