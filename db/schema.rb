@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_062546) do
+ActiveRecord::Schema.define(version: 2021_08_23_091026) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2021_08_09_062546) do
     t.string "postal_code"
     t.string "address"
     t.string "name"
-    t.integer "shippng_cost"
+    t.integer "shipping_cost"
     t.integer "total_payment"
     t.integer "payment_method"
     t.integer "status"

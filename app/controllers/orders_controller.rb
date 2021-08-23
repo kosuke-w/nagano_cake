@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.find(params[:id])
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.status = 0
     @order.save
@@ -37,6 +37,9 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @total = 0
+    @subtotal = 0
   end
 
   def destroy
@@ -53,7 +56,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
   end
 
 end
