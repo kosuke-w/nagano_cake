@@ -71,3 +71,4 @@ gem 'pry-byebug'
 gem 'kaminari'
 
 gem "enum_help"
+gem "rails-i18n"

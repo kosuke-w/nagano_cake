@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :customers
     resources :genres
     resources :items
-    resources :orders
     resources :order_details
+    root to: 'homes#top'
   end
 
   root to: "homes#top"

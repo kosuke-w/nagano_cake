@@ -8,11 +8,11 @@
     <div>
       <label>支払方法</label>
       <div>
-        <%= f.radio_button :payment_method, "credit_card" %>
+        <%= f.radio_button :payment_method, 0 %>
         <%= f.label :payment_method, "クレジットカード" %>
       </div>
       <div>
-        <%= f.radio_button :payment_method, "transfer" %>
+        <%= f.radio_button :payment_method, 1 %>
         <%= f.label :payment_method, "銀行振込" %>
       </div>
     </div>

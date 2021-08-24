@@ -34,8 +34,8 @@
         <tr>
           <th>商品合計</th>
           <td>
-            <%= @total.to_s(:delimited) %>
             <% @total = @order.total_payment - @order.shipping_cost %>
+            <%= @total.to_s(:delimited) %>
           </td>
         </tr>
         <tr>

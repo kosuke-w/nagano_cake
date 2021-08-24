@@ -2,15 +2,15 @@ ja:
   enums:
     customer:
       is_active:
-        Available: '有効'
-        Invalid: '退会'
+        Available: "有効"
+        Invalid: "退会"
 
 ja:
   enums:
     order:
       payment_method:
-        credit_card: 'クレジットカード'
-        transfer: '銀行振込'
+        credit_card: クレジットカード
+        transfer: 銀行振込
 
 ja:
   enums:
