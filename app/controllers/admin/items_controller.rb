@@ -1,4 +1,7 @@
 class Admin::ItemsController < ApplicationController
+
+  before_action :authenticate_admin!, if: :admin_url
+
   def index
     @items = Item.all
     @items = Item.page(params[:page]).per(10)

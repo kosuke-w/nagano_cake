@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
   devise_for :customers, controllers: {
     registrations: 'customers/registrations'
   }
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
   get 'customers/my_page' => "customers#show"
   get 'customers/unsubscribe' => 'customers#unsubscribe'
   patch 'customers/withdraw' => 'customers#withdraw'
+  get 'homes/about' => 'homes#about'
   resources :customers do
     member do
       get "check"

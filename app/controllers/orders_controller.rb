@@ -5,13 +5,21 @@ class OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @total = 0
     @total_payment = SHIPPING_COST + @total
+    if params[:order][:select_address] == "0"
+      @customer = current_customer
+      @order.postal_code = @customer.postal_code
+      @order.address = @customer.address
+      @order.name = @customer.last_name + @customer.first_name
+    elsif params[:order][:select_address] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    end
+
   end
 
   def create

@@ -22,10 +22,14 @@
     </div>
     <div>
       <label>注文ステータス</label>
-      <%= @order.status %>
-      <div>
-        <%= link_to "更新", admin_order_path(@order.id), class: "btn btn-sm btn-green" %>
-      </div>
+      <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+        <% if @order.status == 1 %>
+          <%= f.select :product_status == 1 %>
+        <% else %>
+          <%= f.select :status, Order.statuses.keys %>
+          <%= f.submit "更新" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
@@ -55,10 +59,10 @@
               <% @subtotal = order_detail.item.add_tax_price * order_detail.amount %>
             </td>
             <td>
-              <%= order_detail.product_status %>
-              <div>
-                <%= link_to "更新", admin_order_path(@order.id), class: "btn btn-sm btn-green" %>
-              </div>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
+                <%= f.select :product_status, OrderDetail.product_statuses.keys %>
+                <%= f.submit "更新" %>
+              <% end %>
             </td>
             <% @total += @subtotal %>
           </tr>
