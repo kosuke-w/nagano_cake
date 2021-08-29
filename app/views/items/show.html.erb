@@ -1,31 +1,35 @@
-<div>
-  <div>
-    <%= attachment_image_tag @item, :image, :fill, 100, 100 %>
+<div class="container mt-5 d-flex">
+  <div class="mr-5 d-inline">
+    <%= attachment_image_tag @item, :image, :fill, 300, 300 %>
   </div>
-  <div>
+  <div class="d-inline">
     <div>
-      <%= @item.name %>
-    </div>
-    <div>
-      <%= @item.introduction %>
-    </div>
-    <div>
-      <%= @item.add_tax_price.to_s(:delimited) %>（税込）
-    </div>
-  </div>
-
-  <div>
-    <%= form_with method: :post, model: @cart_item, url: cart_items_path, local:true do |f| %>
-    <div>
-      <%= f.hidden_field :item_id, :value => @item.id %>
+      <h2>
+        <strong><%= @item.name %></strong>
+      </h2>
+      <h4 class="mb-5">
+        <%= @item.introduction %>
+      </h4>
+      <div class="d-flex">
+        <h4 class="d-inline">
+          ¥<%= @item.add_tax_price.to_s(:delimited) %>
+        </h4>
+        <p class="mt-2">（税込）</p>
+      </div>
     </div>
 
-    <div>
-      <%= f.select :amount, *[1..5], include_blank: "個数選択" %>
+    <div class="d-flex">
+      <%= form_with method: :post, model: @cart_item, url: cart_items_path, local:true do |f| %>
+      <div>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+      </div>
+      <div class="form-select d-inline mr-5">
+        <%= f.select :amount, *[1..5], include_blank: "個数選択" %>
+      </div>
+      <div class="d-inline">
+        <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+      </div>
+      <% end %>
     </div>
-    <div>
-      <%= f.submit 'カートに入れる', class: "btn btn-green" %>
-    </div>
-    <% end %>
   </div>
 </div>

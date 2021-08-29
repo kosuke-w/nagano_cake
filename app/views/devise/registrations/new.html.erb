@@ -1,95 +1,97 @@
-<div>
-  <div>
-    <h2>新規会員登録</h2>
+<div class="container col-lg-8">
+  <div class="table-secondary col-lg-2 mt-5 mb-5 ml-5">
+    <h4>新規会員登録</h4>
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-
+  <div class="container col-lg-12 form-horizontal">
     <div class="form-group row">
-      <label>名前</label>
-      <div>
+      <label class="col-sm-3 control-label">名前</label>
+      <div class="field col-sm-3">
         <%= f.label :（姓） %>
-        <%= f.text_field :last_name, autofocus: true %>
+        <%= f.text_field :last_name, {class: "rounded", autofocus: true} %>
       </div>
-      <div>
+      <div class="field col-sm-3">
         <%= f.label :（名） %>
-        <%= f.text_field :first_name %>
+        <%= f.text_field :first_name, {class: "rounded"} %>
       </div>
     </div>
 
     <div class="form-group row">
-      <label>フリガナ</label>
-      <div>
+      <label class="col-sm-3 control-label">フリガナ</label>
+      <div class="field col-sm-3">
         <%= f.label :（セイ） %>
-        <%= f.text_field :last_name_kana %>
+        <%= f.text_field :last_name_kana, {class: "rounded"} %>
       </div>
-      <div>
+      <div class="field col-sm-3">
         <%= f.label :（メイ） %>
-        <%= f.text_field :first_name_kana %>
+        <%= f.text_field :first_name_kana, {class: "rounded"} %>
       </div>
     </div>
 
     <div class="form-group row">
-      <label>メールアドレス</label>
-      <div>
-        <%= f.email_field :email, autocomplete: "email" %>
+      <label class="col-sm-3 control-label">メールアドレス</label>
+      <div class="field col-sm-3">
+        <%= f.email_field :email, {class: "rounded", autocomplete: "email"} %>
       </div>
     </div>
 
     <div class="form-group row">
-      <label>郵便番号(ハイフンなし)</label>
-      <div>
-        <%= f.text_field :postal_code %>
+      <label class="col-sm-3 control-label">郵便番号(ハイフンなし)</label>
+      <div class="field col-sm-3">
+        <%= f.text_field :postal_code, {class: "rounded"} %>
       </div>
     </div>
 
-    <div>
-      <label>住所</label>
-      <div>
-        <%= f.text_area :address %>
+    <div class="form-group row">
+      <label class="col-sm-3 form-label">住所</label>
+      <div class="field col-lg-9">
+        <%= f.text_field :address, {class: "field form-control col-lg-7 border-secondary"} %>
       </div>
     </div>
 
-    <div>
-      <label>電話番号(ハイフンなし)</label>
-      <div>
-        <%= f.text_field :telephone_number %>
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">電話番号(ハイフンなし)</label>
+      <div class="field col-sm-3">
+        <%= f.text_field :telephone_number, {class: "rounded"} %>
       </div>
     </div>
 
-    <div class="field">
-      <label>パスワード(6文字以上)</label>
-      <div>
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">パスワード(6文字以上)</label>
+      <div class="field col-sm-3">
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, {class: "rounded", autocomplete: "new-password"} %>
       </div>
     </div>
 
-    <div class="field">
-      <label>パスワード(確認用)</label>
-      <div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="form-group row">
+      <label class="col-sm-3 control-label">パスワード(確認用)</label>
+      <div class="field col-sm-3">
+        <%= f.password_field :password_confirmation, {class: "rounded", autocomplete: "new-password"} %>
       </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit "新規登録", class: "btn btn-green" %>
+    <div class="actions text-center">
+      <%= f.submit "新規登録", class: "btn btn-success col-sm-2" %>
     </div>
   <% end %>
+  </div>
 </div>
 
-<div>
-  <div>
-    <h2>既に登録済の方</h2>
+<div class="container-fluid col-lg-8">
+  <div class="table-secondary col-lg-2 mt-5 mb-3 ml-5">
+    <h4>既に登録済の方</h4>
   </div>
 
-  <div>
-    <%= link_to new_customer_session_path do %>
-      <p>こちら</p>
+  <div class="d-flex link">
+    <%= link_to new_customer_session_path, {class: "d-inline center-block mr-2"} do %>
+      <u>こちら</u>
     <% end %>
-    <p>からログインしてください。</p>
+    <div class="d-inline center-block">
+      <p>からログインしてください。</p>
+    </div>
   </div>
 </div>

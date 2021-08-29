@@ -1,25 +1,33 @@
-<p>ようこそ、ながのCAKEへ!</p>
-<p>このサイトでは、ケーキ販売のECサイトになります。</p>
-<p>会員でない方も商品の閲覧はできますが、</p>
-<p>購入には会員登録が必要になります。</p>
-
-<h1>新着商品</h1>
-<div>
-  <% @items.each do |item| %>
-      <tr>
-        <td>
-          <%= attachment_image_tag item, :image, :fill, 60, 60 %>
-        </td>
-        <td>
-          <%= item.name %>
-        </td>
-        <td>
-          <%= item.price.to_s(:delimited) %>
-        </td>
-      </tr>
-    <% end %>
+<div class="container border col-lg-6 intro">
+  <div>
+    <p>ようこそ、ながのCAKEへ!</p>
+    <p>このサイトでは、ケーキ販売のECサイトになります。</p>
+    <p>会員でない方も商品の閲覧はできますが、</p>
+    <p>購入には会員登録が必要になります。</p>
+  </div>
 </div>
 
-<div class="form-group">
-  <%= link_to "全ての商品を見る", items_path %>
+<div class="container col-lg-6">
+  <h2>新着商品</h2>
+  <div class="row">
+    <% @items.each do |item| %>
+      <table>
+        <tr class="d-flex flex-column">
+          <td>
+            <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+          </td>
+          <td>
+            <%= item.name %>
+          </td>
+          <td>
+            ¥<%= item.price.to_s(:delimited) %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+
+  <div class="form-group text-right">
+    <%= link_to "全ての商品を見る", items_path %>
+  </div>
 </div>

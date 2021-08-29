@@ -1,15 +1,15 @@
-<div>
-  <div>
-    <h1>ショッピングカート</h1>
-    <div>
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, class: "btn btn-sm btn-red" %>
+<div class="container mt-5 mb-5">
+  <div class="d-flex">
+    <h4 class="table-secondary mb-3 ml-3 d-inline">ショッピングカート</h4>
+    <div class="d-inline ml-auto mb-3">
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, class: "btn btn-sm btn-danger" %>
     </div>
   </div>
 
-  <div>
+  <div class="mb-5">
     <div>
-      <table class="table table-hover table-inverse">
-        <thead>
+      <table class="table table-hover table-bordered table-inverse">
+        <thead class="table-secondary ">
           <th>商品名</th>
           <th>単価（税込）</th>
           <th>数量</th>
@@ -20,6 +20,9 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
+                <div class="mr-3 d-inline">
+                  <%= attachment_image_tag cart_item.item, :image, :fill, 60, 60 %>
+                </div>
                 <%= cart_item.item.name %>
               </td>
               <td>
@@ -27,12 +30,11 @@
               </td>
               <td>
                 <%= form_with method: :patch, model: cart_item, url: cart_item_path(cart_item.id), local:true do |f| %>
-                  <div>
-                    <%= f.select :amount, *[1..5] %>
+                  <div class="d-inline">
+                    <%= f.select :amount, *[1..10] %>
                   </div>
-
-                  <div>
-                    <%= f.submit '変更', class: "btn btn-green" %>
+                  <div class="d-inline">
+                    <%= f.submit '変更', class: "btn btn-success ml-2" %>
                   </div>
                 <% end %>
               </td>
@@ -41,30 +43,31 @@
               </td>
                 <% @total_payment += cart_item.subtotal %>
               <td>
-                <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-red" %>
+                <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger" %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <div>
-        <%= link_to "買い物を続ける", root_path, class: "btn btn-sm btn-red" %>
+
+      <div class="container mt-5 d-flex">
+        <div class="d-inline">
+          <%= link_to "買い物を続ける", root_path, class: "btn btn-sm btn-primary" %>
+        </div>
+        <div class="d-inline ml-auto">
+          <table class="table table-bordered">
+            <tr>
+              <th class="table-secondary">合計金額</th>
+              <td><%= @total_payment.to_s(:delimited) %></td>
+            </tr>
+          </table>
+        </div>
       </div>
-      <table>
-        <thead>
-          <th>合計金額</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= @total_payment.to_s(:delimited) %></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 
-  <div>
-    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-sm btn-green" %>
+  <div class="text-center mb-5">
+    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-sm btn-success" %>
   </div>
 
 
