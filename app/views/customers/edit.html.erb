@@ -1,57 +1,60 @@
-<h1>会員情報編集</h1>
-<%= form_with model: @customer, url: customer_path(@customer.id), local:true do |f| %>
-    <div class="form-group">
-      <div class="form-group row" >
-        <label>氏名</label>
-        <div>
-          <%= f.text_field :last_name %>
-        </div>
-        <div>
-          <%= f.text_field :first_name %>
-        </div>
+<div class="container col-lg-8">
+  <div class="table-secondary col-lg-2 mt-5 mb-5 ml-5">
+    <h4>会員情報編集</h4>
+  </div>
+  <div class="container col-lg-10 form-horizontal">
+    <%= form_with model: @customer, url: customer_path(@customer.id), local:true do |f| %>
+    <div class="form-group row" >
+      <label class="col-sm-3 control-label">氏名</label>
+      <div class="field col-sm-3">
+        <%= f.text_field :last_name, {class: "rounded"} %>
       </div>
-      <div class="form-group row" >
-        <label>フリガナ</label>
-        <div>
-          <%= f.text_field :last_name_kana %>
-        </div>
-        <div>
-          <%= f.text_field :first_name_kana %>
-        </div>
-      </div>
-      <div class="form-group row" >
-        <label>郵便番号</label>
-        <div>
-          <%= f.text_field :postal_code %>
-        </div>
-      </div>
-      <div class="form-group row" >
-        <label>住所</label>
-        <div>
-          <%= f.text_area :address %>
-        </div>
-      </div>
-      <div class="form-group row" >
-        <label>電話番号</label>
-        <div>
-          <%= f.text_field :telephone_number %>
-        </div>
-      </div>
-      <div class="form-group row" >
-        <label>メールアドレス</label>
-        <div>
-          <%= f.text_field :email %>
-        </div>
-      </div>
-      
-    </div>
-    <div>
-      <div class="form-group">
-        <%= f.submit '編集内容を保存', class: "btn btn-green" %>
-      </div>
-      <div class="form-group">
-        <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-sm btn-green" %>
+      <div class="field col-sm-3">
+        <%= f.text_field :first_name, {class: "rounded"} %>
       </div>
     </div>
-    
-<% end %>
+    <div class="form-group row" >
+      <label class="col-sm-3 control-label">フリガナ</label>
+      <div class="field col-sm-3">
+        <%= f.text_field :last_name_kana, {class: "rounded"} %>
+      </div>
+      <div class="field col-sm-3">
+        <%= f.text_field :first_name_kana, {class: "rounded"} %>
+      </div>
+    </div>
+    <div class="form-group row" >
+      <label class="col-sm-3 control-label">郵便番号</label>
+      <div class="field col-sm-3">
+        <%= f.text_field :postal_code, {class: "rounded"} %>
+      </div>
+    </div>
+    <div class="form-group row" >
+      <label class="col-sm-3 control-label">住所</label>
+      <div class="field col-lg-8">
+        <%= f.text_field :address, {class: "field form-control col-lg-12 border-secondary"} %>
+      </div>
+    </div>
+    <div class="form-group row" >
+      <label class="col-sm-3 control-label">電話番号</label>
+      <div class="field col-sm-3">
+        <%= f.text_field :telephone_number, {class: "rounded"} %>
+      </div>
+    </div>
+    <div class="form-group row" >
+      <label class="col-sm-3 control-label">メールアドレス</label>
+      <div class="field col-sm-3">
+        <%= f.text_field :email, {class: "rounded"} %>
+      </div>
+    </div>
+
+    <div class="container d-flex justify-content-center mb-5">
+      <div class="form-group d-inline">
+        <%= f.submit '編集内容を保存', class: "btn btn-success mr-5" %>
+      </div>
+      <div class="form-group d-inline">
+        <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger ml-5" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

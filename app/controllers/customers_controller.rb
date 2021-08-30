@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find(current_customer.id)
+    @customer = current_customer
   end
 
   def check
