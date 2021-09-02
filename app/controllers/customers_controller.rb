@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
 
-  before_action :authenticate_customer!, only: [:show]
+  before_action :authenticate_customer!
 
   def show
     @customer = current_customer
@@ -26,7 +26,7 @@ class CustomersController < ApplicationController
 
   def withdraw
     @customer = Customer.find(current_customer.id)
-    @customer.update(is_active: "Invalid")
+    @customer.update(is_active: false)
     reset_session
     redirect_to root_path
   end
