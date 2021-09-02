@@ -13,9 +13,12 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   def create
     @customer = Customer.new(sign_up_params)
     @customer[:is_active] = true
-    @customer.save
-    sign_in(:customer, @customer)
-    redirect_to customers_my_page_path
+    if @customer.save
+      sign_in(:customer, @customer)
+      redirect_to customers_my_page_path
+    else
+      render :new
+    end
   end
 
   # GET /resource/edit
@@ -67,5 +70,5 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   def sign_up_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :password, :postal_code, :address, :telephone_number, :is_active)
   end
-  
+
 end

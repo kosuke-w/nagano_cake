@@ -23,12 +23,8 @@
     <div class="form-group row">
       <label class="col-sm-2 control-label"><strong>注文ステータス</strong></label>
       <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-        <% if @order.status == 1 %>
-          <%= f.select :product_status == 1 %>
-        <% else %>
-          <%= f.select :status, Order.statuses.keys %>
-          <%= f.submit "更新", class: "btn btn-success ml-5" %>
-        <% end %>
+        <%= f.select :status, Order.statuses.keys %>
+        <%= f.submit "更新", class: "btn btn-success ml-5" %>
       <% end %>
     </div>
   </div>

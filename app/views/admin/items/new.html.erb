@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <h4 class="table-secondary col-lg-2">商品新規登録</h4>
     <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <div class="container col-lg-12 form-horizontal ml-5">
         <div class="form-group row">
           <label class="col-sm-2 control-label">商品画像</label>

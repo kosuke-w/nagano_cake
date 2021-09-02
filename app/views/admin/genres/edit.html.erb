@@ -5,6 +5,7 @@
 
   <div class="container col-lg-12 ml-5 edit">
     <%= form_with model: @genre, url: admin_genre_path(@genre.id), local:true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <div class="form-group row">
         <label class="control-label mr-5">ジャンル名</label>
         <div class="field mr-5">

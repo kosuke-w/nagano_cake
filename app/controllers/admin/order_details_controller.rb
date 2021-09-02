@@ -9,7 +9,7 @@ class Admin::OrderDetailsController < ApplicationController
     if @order_detail.update(order_detail_params)
       if @order_details.where(product_status: 3).count == @order_details.count
         @order_detail.order.update_attributes(status: 3)
-      elsif @order_detail.order.status == 1
+      elsif @order_detail.order.status == "入金確認"
         @order_detail.order.update_attributes(status: 2)
       end
       redirect_to admin_order_path(@order_detail.order)

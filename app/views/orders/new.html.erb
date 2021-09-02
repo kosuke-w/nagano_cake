@@ -1,10 +1,12 @@
 <div class="container mt-5">
+
   <div class="table-secondary col-lg-2">
     <h4>注文情報入力</h4>
   </div>
 
   <div class="container col-lg-12">
     <%= form_with model: @order, url: orders_confirm_path, local:true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div>
       <label><strong>支払方法</strong></label>
       <div class="container ml-3">
@@ -32,7 +34,7 @@
           <%= f.radio_button :select_address, 1 %>
           <%= f.label :select_address, "登録済住所から選択" %>
           <div class="ml-3">
-            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+            <%= f.select :address_id, options_from_collection_for_select(Address.where(customer_id: current_customer.id), :id, :address_display), :include_blank => "選択してください" %>
           </div>
         </div>
         <div>
