@@ -12,7 +12,7 @@
       <%= link_to "退会しない", customers_my_page_path, class: "btn btn-sm btn-primary w-100" %>
     </div>
     <div class="form-group d-inline ml-5">
-      <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-sm btn-danger w-100" %>
+      <%= link_to "退会する", customers_withdraw_path(@customer), method: :patch, class: "btn btn-sm btn-danger w-100", "data-confirm" => "退会します。よろしいですか？" %>
     </div>
   </div>
 </div>
