@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :orders
     resources :customers
-    resources :genres
+    resources :genres do
+      collection do
+        get 'search'
+      end
+    end
     resources :items
     resources :order_details
     root to: 'homes#top'
