@@ -37,7 +37,7 @@ class Admin::GenresController < ApplicationController
 
   private
   def set_q
-    @q = Genre.ransack(params[:q])
+    @q = Item.ransack(params[:q])
   end
 
   def genre_params
