@@ -1,4 +1,8 @@
 結果
 <% @results.each do |item| %>
-  <%= item.name %>
+  <div class="row mr-5">
+    <%= item.name %>
+    <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+    <%= item.price %>
+  </div>
 <% end %>
