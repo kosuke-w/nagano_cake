@@ -1,7 +1,6 @@
 class Admin::GenresController < ApplicationController
 
   before_action :authenticate_admin!, if: :admin_url
-  before_action :set_q, only: [:index, :search]
 
   def index
     @genres = Genre.all
@@ -31,15 +30,7 @@ class Admin::GenresController < ApplicationController
     end
   end
 
-  def search
-    @results = @q.result
-  end
-
   private
-  def set_q
-    @q = Item.ransack(params[:q])
-  end
-
   def genre_params
     params.require(:genre).permit(:name)
   end
